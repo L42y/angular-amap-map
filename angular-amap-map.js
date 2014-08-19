@@ -1,6 +1,8 @@
 angular.module('l42y.amap.map', [
+  'l42y.amap'
 ]).directive('amapMap', function (
-  $window
+  $window,
+  Amap
 ) {
   return {
     scope: {
@@ -12,10 +14,15 @@ angular.module('l42y.amap.map', [
     controller: function ($scope, $element, $attrs) {
       var self = this;
       var mapOptions = $scope.$eval($attrs.amapMapOptions);
-      self.map = new $window.AMap.Map($element[0], mapOptions);
 
-      $scope.$watchCollection('fitView', function (overlays) {
-        if (overlays) self.map.setFitView(overlays);
+      Amap.promise.then(function () {
+        self.map = new $window.AMap.Map($element[0], mapOptions);
+
+        $scope.$watchCollection('fitView', function (overlays) {
+          if (overlays) {
+            self.map.setFitView(overlays);
+          };
+        });
       });
     },
     controllerAs: 'amap'

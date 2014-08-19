@@ -2,32 +2,15 @@
 
 ## Dependencies
 
-* [Amap JavaScript API](http://developer.amap.com/api/javascript-api/)
+* [angular-amap](https://github.com/L42y/angular-amap)
 
 ## Installation
 
-1. including Amap JavaScript API script file into your application, with your API key and callback
+1. `bower install --save L42y/angular-amap-map`
 
-    ```html
-    <script src="http://webapi.amap.com/maps?v=1.3&key={{ API key }}&callback=onMapApiReady">
-    ```
+2. including `angular-amap-map.js` script file provided by this component into your application
 
-2. bootstrapping your application after API is ready
-
-    ```js
-    window.onMapApiReady = function bootstrapApp () {
-      angular.element(document).ready(function () {
-        angular.bootstrap(document, ['{{ AppModule }}']);
-      });
-    };
-    ```
-
-3. `bower install --save L42y/angular-amap-map`
-
-4. including `angular-amap-map.js` script file provided by this component into your application
-
-5. adding `l42y.amap.map` as a module dependency to your application
-
+3. adding `l42y.amap.map` as a module dependency to your application
 
 ## Usage
 
