@@ -13,10 +13,10 @@ angular.module('l42y.amap.map', [
     transclude: true,
     controller: function ($scope, $element, $attrs) {
       var self = this;
-      var mapOptions = $scope.$eval($attrs.amapMapOptions);
 
       Amap.promise.then(function () {
-        self.map = new $window.AMap.Map($element[0], mapOptions);
+        var options = $scope.$parent.$eval($attrs.amapMapOptions);
+        self.map = new $window.AMap.Map($element[0], options);
 
         $scope.$watchCollection('fitView', function (overlays) {
           if (overlays) {
